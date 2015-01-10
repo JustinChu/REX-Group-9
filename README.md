@@ -2,7 +2,8 @@ REX-Group-9
 ===========
 This repository holds code for REX Group 9.
 
-Hi, guys. -Sarah\n
+Hi, guys. -Sarah
+
 Hello. -Kevin
 
 Links
