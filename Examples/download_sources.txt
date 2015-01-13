@@ -1,0 +1,1 @@
+ftp://ftp.ncbi.nlm.nih.gov/genomes/Viruses/Zaire_ebolavirus_uid14703/NC_002549.fna
