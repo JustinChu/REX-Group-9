@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-Downloader -- A simple python script for fasta file give a NCBI gene id (GI)
+Downloader -- A simple python script for downloading a multifasta file give a NCBI gene id (GI)
 
 This code serves as an example.
 
@@ -28,9 +28,7 @@ class Downloader:
     def downloadFiles(self, output):
         """Uses biopython to get fasta file in output"""
         
-        #check output older
-        if not os.path.exists(output):
-            os.makedirs(output)
+        out = open(output, 'w')
             
         ## We instead upload the list of IDs        
         request = Entrez.epost("nucleotide",id=", ".join(map(str,self._files)))
@@ -47,11 +45,8 @@ class Downloader:
             
             outputStr = ">GI " + str(gi) + " " + r["GBSeq_primary-accession"] + " " \
                         + r["GBSeq_definition"] + "\n" + r["GBSeq_sequence"]
-            
-            #write to file
-            out = open(output + "/" + str(gi) + ".fa", 'w')
             out.write(outputStr)
-            out.close()
+        out.close()
 
     
 if __name__ == '__main__':
@@ -60,7 +55,7 @@ if __name__ == '__main__':
     parser.add_option("-i", "--input", dest="input", metavar="INPUT",
                       help="input file of list of NCBI GI numbers to download in fasta format")
     parser.add_option("-o", "--out", dest="out", metavar="OUTPUT", 
-                      help="output folder for downloaded files")
+                      help="output fasta file path")
     parser.add_option("-e", "--email", dest="email", metavar="EMAIL", default = "email@email.com",
                       help="email used as login ID")
                 
