@@ -44,7 +44,7 @@ class Downloader:
                 gi=None
             
             outputStr = ">GI " + str(gi) + " " + r["GBSeq_primary-accession"] + " " \
-                        + r["GBSeq_definition"] + "\n" + r["GBSeq_sequence"]
+                        + r["GBSeq_definition"] + "\n" + r["GBSeq_sequence"] + "\n"
             out.write(outputStr)
         out.close()
 
