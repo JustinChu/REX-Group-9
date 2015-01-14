@@ -6,9 +6,6 @@
 
 all: output.fa.gz
 
-install-deps:
-	sudo easy_install -f http://biopython.org/ biopython
-
 .PHONY: all clean install-deps
 .DELETE_ON_ERROR:
 .SECONDARY:
