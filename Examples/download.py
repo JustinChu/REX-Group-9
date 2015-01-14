@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 '''
-Downloader -- A simple python script for downloading a multifasta file give a NCBI gene id (GI)
+Downloader -- A simple python script for downloading a multifasta file give a NCBI genbank id (GI)
 
 This code serves as an example.
 
