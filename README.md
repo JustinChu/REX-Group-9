@@ -6,6 +6,10 @@ This repository holds code for REX Group 9.
 * Sarah
 * Kevin
 
+Folders
+------
+* Examples - Contains and example python script and makefile
+
 Links
 ------
 [Group 9 Google Docs folder](https://drive.google.com/?tab=mo&authuser=0#folders/0B-FdJXlihZZvaExNWDh0RWJuWm8)
