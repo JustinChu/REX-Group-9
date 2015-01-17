@@ -5,6 +5,7 @@ This repository holds code for REX Group 9.
 #####Group Members (fill in please to show you know how to commit and push from outside github!):
 * Sarah
 * Kevin
+* MengChi
 
 Folders
 ------
