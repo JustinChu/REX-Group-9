@@ -2,9 +2,14 @@ REX-Group-9
 ===========
 This repository holds code for REX Group 9.
 
-Hi, guys. -Sarah
+#####Group Members (fill in please to show you know how to commit and push from outside github!):
+* Sarah
+* Kevin
+* MengChi
 
-Hello. -Kevin
+Folders
+------
+* Examples - Contains and example python script and makefile
 
 Links
 ------
