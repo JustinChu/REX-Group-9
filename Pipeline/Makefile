@@ -4,17 +4,17 @@
 #It would probably be better to gzip each file as they are downloaded
 #rather than afterwards
 
-all: output.fa.gz output.afa vcfoutput.vcf
+all: output.fa.gz output.afa output.vcf
 
 .PHONY: all clean install-deps
 .DELETE_ON_ERROR:
 .SECONDARY:
 
 clean:
-	rm -rf output.fa* -r 
+	rm -rf output.* -r 
 
 #download files
-output.fa : download.py download_sources.txt
+output.fa : download.py download_sources_small.txt
 	python $< -i $(word 2,$^) -o $@
 
 #gzip files
@@ -26,5 +26,6 @@ output.afa : output.fa
 	muscle -in $< -out $@
 
 #variant calling
-vcfoutput.vcf : output.afa
-	java -jar biostar94573.jar $< > $@ 
+output.vcf : output.afa
+	python3 FastaToVCF.py output.afa output.vcf
+
