@@ -7,6 +7,7 @@ from collections import OrderedDict
 threshold = 0.95;
 countPattern = re.compile(ur'(.:\d.\d+)')
 
+# Hook this up to the pipeline/change the file name
 f = open("outputfull.frq", "r+")
 
 result = {}
