@@ -1,0 +1,27 @@
+Convert mafft file to phylip file (*.phy)
+
+I use the perl script from http://www.mbari.org/staff/haddock/scripts/
+The first script on the website: [encodename.pl]
+
+run “perl encodename.pl [mfft file name]”
+
+I use the default setting here. The script will rename the longer name to shorter name for each individual and give us a dictionary file (*.lut) for reference.
+
+It seems that we can convert the shorter name back to the longer name by this script: [decodename.pl]
+but I haven’t tried it. Sorry….
+
+-----------------
+
+Construction of phylogenetic tree
+
+I use RAxML to construct phylogenetic tree: http://sco.h-its.org/exelixis/software.html
+
+raxmlHPC -m GTRGAMMA -p 1225 -s [phy file name] -# 20 -n [output name]
+
+-m type of parsimony: I use GTRGAMMA. This is also the parsimony used by the Ebola paper on Science.
+-p random number seed: I use 1225 (my birthday...), you can use whatever you want. Just be consistent.
+-s read which file
+-# replication: I used 5 when I tested it. The Ebola paper on Science used 15 replications. The program will choose one of the best result from these 5 or 15 replications.
+-n the name of the output file
+
+The result can be read by Dendroscope.
