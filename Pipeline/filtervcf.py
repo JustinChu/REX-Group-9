@@ -29,7 +29,7 @@ def main(argv):
 					skip = False
 				else:
 					for i in range(0, len(col)):
-						if i == 5:
+						if i == 4:
 							if col[i] != "N" and col[i] != "-":
 								ignore = False
 						if i >= startCol and ignore == False: 
