@@ -4,14 +4,14 @@
 #It would probably be better to gzip each file as they are downloaded
 #rather than afterwards
 
-all: output.fa.gz output.afa output.vcf
+all: output.fa.gz output.afa output.vcf output.afa output.frq output_sorted.frq
 
 .PHONY: all clean install-deps
 .DELETE_ON_ERROR:
 .SECONDARY:
 
 clean:
-	rm -rf output.* -r 
+	rm -rf output* -r 
 
 #download files
 output.fa : download.py download_sources_small.txt
@@ -29,3 +29,10 @@ output.afa : output.fa
 output.vcf : output.afa
 	python3 FastaToVCF.py output.afa output.vcf
 
+#frequency
+output.frq : output.vcf
+	bin/vcftools --vcf $< --freq --out output
+
+#snp filtering
+output_sorted.frq : snpparser.py output.frq
+	python $< -i output.frq > $@
