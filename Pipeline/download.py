@@ -43,8 +43,10 @@ class Downloader:
             except ValueError:
                 gi=None
             
+            #outputStr = ">GI|" + str(gi) + "|" + r["GBSeq_primary-accession"] + " " \
+                        #+ r["GBSeq_definition"] + "\n" + r["GBSeq_sequence"] + "\n"
             outputStr = ">GI|" + str(gi) + "|" + r["GBSeq_primary-accession"] + " " \
-                        + r["GBSeq_definition"] + "\n" + r["GBSeq_sequence"] + "\n"
+                        + "\n" + r["GBSeq_sequence"] + "\n"
             out.write(outputStr)
         out.close()
 

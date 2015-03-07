@@ -6,12 +6,17 @@
 
 all: output.fa.gz output.afa output.vcf output.afa output.frq output_sorted.frq
 
+ref: output.fa.gz output.afa
+
+tree: output.fa.gz output.afa output.ctx.phy RAxML_bestTree.T1 RAxML_bestTree.tre
+
 .PHONY: all clean install-deps
 .DELETE_ON_ERROR:
 .SECONDARY:
 
 clean:
 	rm -rf output* -r 
+	rm -rf RAxML* -r
 
 #download files
 output.fa : download.py download_sources_small.txt
@@ -36,3 +41,16 @@ output.frq : output.vcf
 #snp filtering
 output_sorted.frq : snpparser.py output.frq
 	python $< -i output.frq > $@
+
+#encode 
+output.ctx.phy : output.afa
+	perl -w encodename.pl output.afa
+
+#construct tree
+RAxML_bestTree.T1 : output.ctx.phy
+	./raxmlHPC -m GTRGAMMA -p 1225 -s output.ctx.phy -\# 20 -n T1
+
+#decode
+RAxML_bestTree.tre : RAxML_bestTree.T1
+	perl -w decodename.pl -h output.ctx.lut RAxML_bestTree.T1
+
