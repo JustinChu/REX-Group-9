@@ -8,7 +8,7 @@ all: output.fa.gz output.afa output.vcf output.afa output.frq output_sorted.frq
 
 ref: output.fa.gz output.afa
 
-tree: output.fa.gz output.afa output.ctx.phy RAxML_bestTree.T1 RAxML_bestTree.tre
+tree: output.ctx.phy RAxML_bestTree.T1 RAxML_bestTree.tre
 
 .PHONY: all clean install-deps
 .DELETE_ON_ERROR:
@@ -52,6 +52,6 @@ RAxML_bestTree.T1 : output.ctx.phy
 
 #decode
 RAxML_bestTree.tre : RAxML_bestTree.T1
-	perl -w decodename.pl -h output.ctx.lut RAxML_bestTree.T1
+	perl -w decodename.pl -h output.ctx.lut -i RAxML_bestTree.T1
 	rm -rf *.T1.* #comment out if want to keep the RUN files
 
