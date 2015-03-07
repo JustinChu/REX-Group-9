@@ -28,7 +28,7 @@ output.fa : download.py download_sources_small.txt
 
 #muscle alignment
 output.afa : output.fa
-	muscle -in $< -out $@
+	bin/muscle -in $< -out $@
 
 #variant calling
 output.vcf : output.afa
@@ -48,9 +48,10 @@ output.ctx.phy : output.afa
 
 #construct tree
 RAxML_bestTree.T1 : output.ctx.phy
-	./raxmlHPC -m GTRGAMMA -p 1225 -s output.ctx.phy -\# 20 -n T1
+	bin/raxmlHPC -m GTRGAMMA -p 1225 -s output.ctx.phy -\# 20 -n T1
 
 #decode
 RAxML_bestTree.tre : RAxML_bestTree.T1
 	perl -w decodename.pl -h output.ctx.lut RAxML_bestTree.T1
+	rm -rf *.T1.* #comment out if want to keep the RUN files
 
