@@ -10,7 +10,6 @@ countPattern = re.compile(ur'(.:\d.\d+)')
 
 # Hook this up to the pipeline/change the file name
 
-
 def main(argv):
 	f = ''
 	try:
@@ -28,17 +27,21 @@ def main(argv):
 			i = 0 
 			for line in f:
 				countList = re.findall(countPattern, line)
+				skip = False
 				if len(countList) > 0:
 					maxFreq = -1
 					for c in countList:
 						count = c.split(":", 1)
 						allele = count[0]
+						if allele == "N" or allele == "-":
+							skip = True
+							break
 						freq = float(count[1])
 						# finds the max allele frequency for each snp 
 						if freq > maxFreq:
 							maxFreq = freq
 							# filters max allele frequency
-					if maxFreq <= threshold:
+					if skip == False and maxFreq <= threshold:
 						result[i] = line
 						i+=1
 			sortedResult = OrderedDict(sorted(result.items(), key=lambda r: sortByFreq(r[1]), reverse=True))
