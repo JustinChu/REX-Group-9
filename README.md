@@ -1,15 +1,14 @@
 REX-Group-9
 ===========
-This repository holds code for REX Group 9.
+This repository holds code for UBC REX Group 9, 2014-2015.
 
-#####Group Members (fill in please to show you know how to commit and push from outside github!):
-* Sarah
-* Kevin
-* MengChi
+A pipeline for finding and characterizing mutation that occur over the course of a pathogen outbreak.
 
 Folders
 ------
 * Examples - Contains and example python script and makefile
+* Pipeline - Analysis pipeline scrites
+* Validation - comparision to results from 2014 ebola zaire outbreak publication
 
 Links
 ------
